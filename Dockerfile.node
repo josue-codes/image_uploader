@@ -1,0 +1,16 @@
+# Dockerfile.node
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY package.json .
+COPY package-lock.json .
+
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "start"]
+
+# To build the container run `docker build -f Dockerfile.node -t image_upload_dev .`
+# To run the container run `docker run -p 3000:3000 -v /Volumes/JosueSSD/mac\ latest\ documents/react-projects/image_uploader:/app -v /app/node_modules image_upload_dev`
