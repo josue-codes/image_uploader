@@ -36,12 +36,17 @@ const login_handler = (
         })
         .then(data => set_access_token(data.access_token))
         .catch(error => {
-            error
+            try {
+                error
                 .json()
                 .then(message => {
                     console.log(message);
                     set_token_retrieval_error(message.detail);
-                });
+                });    
+            } catch (e) {
+                console.log(error.message);
+                set_token_retrieval_error(error.message);
+            }
         });
 };
 
