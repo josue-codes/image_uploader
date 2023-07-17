@@ -5,7 +5,7 @@ import './App.css';
 import Home from "./Home";
 import LanguageSelector from "./LanguageSelector";
 import { english } from "./languages";
-import { login_handler, input_text_handler,  language_handler} from "./handlers";
+import { login_handler, input_text_handler,  language_handler } from "./event_handlers";
 
 function App() {
 
