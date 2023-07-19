@@ -1,70 +1,119 @@
-# Getting Started with Create React App
+# Image Uploader
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
 
-## Available Scripts
+1. [About The Project](#about-the-project)
+2. [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+4. [Roadmap](#roadmap)
+5. [Contribution](#contribution)
+6. [License](#license)
+7. [Contact](#contact)
+8. [Acknowledgements](#acknowledgements)
 
-In the project directory, you can run:
+## About The Project
 
-### `npm start`
+Image Uploader strives to be a private media sharing platform for events
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Getting Started
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This project specifically uses [DigitalOcean S3-compatible Spaces](https://docs.digitalocean.com/products/spaces/) object storage service.
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project has a few prerequisites that you must install in order to get it running locally. If you want to do it the easy (Docker) way then all you need to get started are Docker and Docker Compose V2. If you need to customize your setup for whatever reason there is a section below for The Harder Way.
 
-### `npm run build`
+#### Environment Variables
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Those'll go here as I get to 'em.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### The Docker Way
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository with
 
-### `npm run eject`
+HTTPS
+  ```bash
+  git clone https://github.com/josue-codes/image_uploader.git
+  ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+or SSH
+   ```bash
+   git clone git@github.com:josue-codes/image_uploader.git
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Navigate to the project directory
+  ```bash
+  cd image_uploader
+  ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Launch the Docker services.
+   ```bash
+   docker compose up --build -d
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### The Harder Way
 
-## Learn More
+I won't be providing a full guide to get you up and running, if you are choosing this path it's because you know what you are doing and have specific reason to do so.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Front-End
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The front-end of this project is built with React, and it uses the react-router-dom library for routing.
 
-### Code Splitting
+- You'll need Node.js and npm installed to manage the front-end dependencies. You can download Node.js and npm from the [official site](https://nodejs.org/). After installation, you can verify the installation by running the following commands in your terminal:
+   ```bash
+   node -v
+   npm -v
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- You will also need to install the React and react-router-dom libraries. After cloning the repository and navigating to the project directory, you can install them using npm:
+   ```bash
+   npm install react react-dom react-router-dom
+   ```
 
-### Analyzing the Bundle Size
+#### Back-End
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The back-end of this project is built with Python using the FastAPI framework.
 
-### Making a Progressive Web App
+- You'll need Python 3.11 installed. You can download it from the [official site](https://www.python.org/downloads/). After installation, verify the installation by running the following command in your terminal:
+   ```bash
+   python --version
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- You'll also need to install FastAPI and a server to run it, such as Uvicorn. It's recommended to first create a virtual environment. After that, you can install FastAPI and Uvicorn using pip, Python's package installer:
+   ```bash
+   python -m venv env
+   source env/bin/activate  # On Windows, use `env\Scripts\activate`
+   pip install fastapi uvicorn
+   ```
 
-### Advanced Configuration
+After you have these prerequisites installed, you should be able to run the project locally. 
+Please adjust the instructions based on the specific requirements of your project, such as other dependencies or environment-specific instructions.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Roadmap
 
-### Deployment
+This section can list any upcoming, planned, or desired features.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Contribution
 
-### `npm run build` fails to minify
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some Amazing Feature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## Contact
+
+Joshua Andujar - [josue@josue.codes](mailto:josue@josue.codes) 
+
+## Acknowledgements
+
+Thanks to [The Net Ninja](https://www.youtube.com/@NetNinja) for his awesome playlist on React that got me up and running in just a day's time.
+
+- [Follow him on GitHub](https://github.com/iamshaunjp)
+- [Full Modern React Tutorial](https://youtube.com/playlist?list=PL4cUxeGkcC9gZD-Tvwfod2gaISzfRiP9d)
