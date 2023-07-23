@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+
+  image_uploader_api:
+    container_name: image_uploader_api
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    command: uvicorn main:app --host 0.0.0.0 --port 3030 --reload
+    env_file:
+      - .env
+    ports:
+      - '3030:3030'
+    volumes:
+      - ./api_src:/app
+
+  image_uploader_frontend:
+    container_name: image_uploader_frontend
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+      - /app/node_modules
