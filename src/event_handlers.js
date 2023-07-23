@@ -18,7 +18,9 @@ const login_handler = (
     set_access_token,
     set_token_retrieval_error
 ) => async event => {
-    const url = 'http://192.168.1.143:3030/party';
+    const url = 'http://localhost:3030/party';
+    set_access_token(null);
+    set_token_retrieval_error(null);
 
     await fetch(url, {
         method: 'POST',
@@ -34,17 +36,19 @@ const login_handler = (
             }
             return response.json();
         })
-        .then(data => set_access_token(data.access_token))
+        .then(data => {
+            set_access_token(data.access_token);
+        })
         .catch(error => {
             try {
                 error
                 .json()
                 .then(message => {
-                    console.log(message);
-                    set_token_retrieval_error(message.detail);
+                    console.log(error);
+                    set_token_retrieval_error(message.detail.toString());
                 });    
             } catch (e) {
-                console.log(error.message);
+                console.log(error);
                 set_token_retrieval_error(error.message);
             }
         });

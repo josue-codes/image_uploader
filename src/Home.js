@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 
 export default function Home({
     language,
@@ -6,7 +6,8 @@ export default function Home({
     party_code_handler,
     user_name,
     user_name_handler,
-    login_handler
+    login_handler,
+    error_message
 }) {
     return (
         <div className="home-page">
@@ -31,6 +32,7 @@ export default function Home({
                     className="button"
                     onClick={ login_handler }
                 >{ language.home_join_the_party }</div>
+                { error_message && <div className="error-message">{error_message}</div> }
             </div>
         </div>
     )
