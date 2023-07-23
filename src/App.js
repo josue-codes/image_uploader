@@ -29,8 +29,8 @@ function App() {
                     set_access_token,
                     set_token_retrieval_error
                 ) }
+                error_message={ token_retrieval_error }
             />
-            { token_retrieval_error && <div>{token_retrieval_error}</div> }
             {/*<NavigationBar language={language} languageHandler={language_handler}/>*/}
             {/*<FileUpload language={language} />*/}
             <LanguageSelector language_handler={language_handler(set_language)}/>
