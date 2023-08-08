@@ -3,4 +3,5 @@ mongoengine
 passlib~=1.7.4
 pydantic~=1.10.11
 python-jose[cryptography]
+python-multipart
 uvicorn

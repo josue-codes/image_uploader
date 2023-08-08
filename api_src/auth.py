@@ -1,8 +1,9 @@
 from datetime import timedelta, datetime
 from dataclasses import dataclass
+from typing import TypedDict
 
 from mongoengine import connect, Document, StringField
-from fastapi import Depends, HTTPException, status, Request, Form
+from fastapi import HTTPException, status, Request, Form
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 
@@ -58,12 +59,25 @@ class PartyParticipant:
 #     expiration: datetime
 
 
-def authenticate_party(party_code: str, user_name: str) -> PartyParticipant | None:
+class Authentication(TypedDict):
+    access_token: str
+    party_code: str
+    user_name: str
+
+
+def authenticate_party(
+        party_code: str = Form(...),
+        user_name: str = Form(...)
+) -> Authentication:
     if party_code == '' or user_name == '':
         raise details_exception
-    party = Party.objects(party_code=party_code).first()
+    party = _get_party(party_code)
     if party and user_name:
-        return PartyParticipant(party, user_name)
+        return {
+            'access_token': create_access_token(PartyParticipant(party, user_name).dict),
+            'party_code': party_code,
+            'user_name': user_name
+        }
     raise party_exists_exception
 
 
@@ -90,8 +104,7 @@ def authenticate_party_with_access_token(
 ) -> dict:
     access_token = _get_access_token_from_cookies(request)
     payload = _decode_access_token(access_token)
-    party = _get_party(payload.get('sub'))
-    return party.dict()
+    return payload
 
 
 def _get_access_token_from_cookies(request: Request) -> str:
