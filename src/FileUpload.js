@@ -14,7 +14,7 @@ const FileUpload = ({ language }) => {
   const uploadFile = (formData) => {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      xhr.open("POST", "http://192.168.100.26:8888/images");
+      xhr.open("POST", "/api/images");
 
       xhr.onload = () => {
         if (this.status >= 200 && this.status < 300) {
