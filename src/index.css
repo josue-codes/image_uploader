@@ -56,8 +56,24 @@ body {
 .content {
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
     flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    /* For Firefox */
+    scrollbar-width: none;
+
+    /* For Internet Explorer and Edge */
+    -ms-overflow-style: none;
+
+    /* For WebKit browsers like Chrome, Safari */
+    &::-webkit-scrollbar {
+        display: none;
+        width: 0;
+        background: transparent;
+    }
 }
 
 .home-page h1,
@@ -99,6 +115,34 @@ body {
     color: #a10000;
 }
 
+.add-photo {
+    position: absolute;
+    bottom: 1.5em;
+    display: inline-block;
+    width: 2em;           /* Adjust size as needed */
+    height: 2em;          /* Adjust size as needed */
+    background-color: #d87127;  /* Circle fill color */
+    color: #f7f3ed;           /* Plus sign color */
+    border-radius: 50%;    /* Makes it a circle */
+    text-align: center;
+    line-height: 2em;     /* Centers the plus vertically, adjust if you change the height */
+    font-size: 2em;       /* Adjust plus sign size */
+    border: none;          /* Remove default button styles */
+    cursor: pointer;       /* Mouse pointer on hover */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow */
+    transition: transform 0.3s ease;  /* Optional: Smooth scale on hover */
+    margin: 0.5em;
+}
+
+.add-photo:hover {
+  transform: scale(1.05);  /* Optional: Scale button on hover */
+}
+
+.add-photo:focus {
+  outline: none;  /* Remove default focus styles. Note: Be sure to provide alternative focus styles for accessibility */
+}
+
+
 /* Specific styling for mobile devices */
 @media only screen and (max-width: 480px) {
     .home-page h1 {
@@ -115,6 +159,10 @@ body {
 
     .home-page input[type="text"] {
         width: 90%;
+    }
+
+    .add-photo {
+        bottom: 0.25em;
     }
 }
 
