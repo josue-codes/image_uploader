@@ -59,6 +59,14 @@ body {
     align-items: center;
     justify-content: center;
     flex-grow: 1;
+}
+
+.scrollable-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
     overflow-y: auto;
     overflow-x: hidden;
 
@@ -67,13 +75,13 @@ body {
 
     /* For Internet Explorer and Edge */
     -ms-overflow-style: none;
+}
 
-    /* For WebKit browsers like Chrome, Safari */
-    &::-webkit-scrollbar {
-        display: none;
-        width: 0;
-        background: transparent;
-    }
+/* For WebKit browsers like Chrome, Safari */
+.scrollable-content::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    background: transparent;
 }
 
 .home-page h1,
